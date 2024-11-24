@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+}
+
+.main-content {
+  display: flex;
+  background-color: #333;
+  margin-top: 30px;
+}
+
+.body_div{
+  height: 1000px;
+}
+
+.ticket-section {
+  margin-top: -70px;
+  padding: 20px;
+  background-color: #007bff;
+  color: white;
+}
+
+.ticket-section h3 {
+  text-align: center;
+}
+
+.ticket-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ticket-form input,
+.ticket-form .search-button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.ticket-form .search-button {
+  background-color: white;
+  color: #007bff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+}
+.bus-image {
+  max-width: 100%;
+  height: auto;
+}

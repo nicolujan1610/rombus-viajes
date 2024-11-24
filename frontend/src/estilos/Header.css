@@ -1,0 +1,41 @@
+.header {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #007CCA;
+  border-bottom: 1px solid #ccc;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.header .logo img {
+  height: 80px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.header nav a {
+  margin: 0 20px;
+  margin-left: 10px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 21px;
+}
+
+.header .login-button {
+  padding: 15px 15px;
+  background-color: #47a0ff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 60px;
+  width: 180px;
+  font-size: 23px;
+}
