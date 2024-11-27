@@ -1,0 +1,96 @@
+.login-container{
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  position: relative;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.9);;
+}
+
+.cerrar-login-button{
+  z-index: 999;
+  color: #000000;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid #333;
+  user-select: none;
+
+}
+
+.iniciar-sesion{
+  color: #181d22;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-form input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.login-button {
+  padding: 10px;
+  background-color: rgb(95, 176, 241);
+  color: #181d22;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.signup-prompt {
+  margin-top: 10px;
+  color: #181d22;
+}
+
+.signup-prompt a {
+  color: #000000;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.signup-prompt a:hover {
+  color: #0056b3;
+}
+
+
+
+

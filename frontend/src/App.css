@@ -1,52 +1,52 @@
-body {
+.App{
   margin: 0;
   font-family: Arial, sans-serif;
   justify-content: center;
   align-items: center;
-  background-color: #333;
+  background-color: #004f7d;
+  color: #fff;
+  position: relative;
 }
 
-.main-content {
-  display: flex;
-  background-color: #333;
-  margin-top: 30px;
+.main-container {
+  display: flex; 
+  background-color: #004f7d;
 }
 
-.body_div{
-  height: 1000px;
-}
-
-.ticket-section {
-  margin-top: -70px;
-  padding: 20px;
-  background-color: #007bff;
-  color: white;
-}
-
-.ticket-section h3 {
-  text-align: center;
-}
-
-.ticket-form {
+.main-container{
   display: flex;
   justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  align-items: center;
+  width: 100vw;
+  max-width: 1340px;
+  height: calc(100vh - 190px);
+  overflow: hidden;
+  margin: auto;
 }
 
-.ticket-form input,
-.ticket-form .search-button {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-}
-
-.ticket-form .search-button {
-  background-color: white;
-  color: #007bff;
+.main-title{
+  width: 40%;
+  height: 100%;
+  font-size: 32px;
   font-weight: bold;
-  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
 }
+
+.main-img{
+  width: 60%;
+}
+
+.main-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 .footer {
   text-align: center;

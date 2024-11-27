@@ -1,42 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Header from "./componentes/Header";
-import backgroundConTexto from './assets/Background-con-texto.png'
+import rombusBus from './assets/rombusBus.jpeg'
+import ComprarTicket from "./componentes/ComprarTicket";
+import NuestrosDestinos from "./componentes/NuestrosDestinos";
+import Login from "./componentes/login";
+import ServiciosOfrecidos from "./componentes/ServiciosOfrecidos";
 
 function App() {
+  const [loginModal, setLoginModal] = useState(false)
+
   return (
     <div className="App">
-      <Header />
-
-
-      <main className="main-content">
-        <div className="body_div">
-          <img src={backgroundConTexto} alt="imagen-bus" height={900} />
+      <Header setLoginModal={setLoginModal} />
+      <main className="main-container">
+        <div className="main-title">
+          <p>Viajar nunca fue tan facil y seguro!</p>
+          <p>Elige viajar con Rombus Viajes!</p>
+        </div>
+        <div className="main-img">
+          <img src={rombusBus} alt="imagen-bus" />
         </div>
       </main>
-
-      <section className="ticket-section">
-        <h3>Pasajes</h3>
-        <form className="ticket-form">
-          <input type="text" placeholder="Origen" />
-          <input type="text" placeholder="Destino" />
-          <input type="date" />
-          <input type="number" placeholder="Pasajeros" />
-          <div className="radio-buttons">
-            <label>
-              <input type="radio" name="trip-type" value="round" /> Ida y vuelta
-            </label>
-            <label>
-              <input type="radio" name="trip-type" value="oneway" /> Sólo ida
-            </label>
-          </div>
-          <button type="submit" className="search-button">Buscar</button>
-        </form>
-      </section>
-
+      <ComprarTicket />
+      <NuestrosDestinos />
+      <ServiciosOfrecidos />
       <footer className="footer">
         <p>Rombus Up Todos los derechos reservados.</p>
       </footer>
+      {
+        loginModal &&
+        <Login setLoginModal={setLoginModal} />
+      }
     </div>
   );
 }
