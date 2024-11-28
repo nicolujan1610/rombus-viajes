@@ -1,0 +1,81 @@
+.customer-support-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  background-color: #333;
+  padding: 12px 0;
+  width: 100%;
+}
+
+.customer-support--form-box {
+  background-color: #007bff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.form-primera-parte{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 120px;
+}
+
+.form-primera-parte div{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 50%;
+}
+
+
+.customer-support--form-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.customer-support--form-box form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.customer-support--form-box form input,
+.customer-support--form-box form select,
+.customer-support--form-box form textarea,
+.customer-support--form-box form button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.customer-support--form-box form select,
+.customer-support--form-box form textarea {
+  resize: none;
+}
+
+.customer-support--form-box form button {
+  background-color: white;
+  color: #007bff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.descripcion{
+  font-size: 18px;
+}
+.etiqueta{
+  margin-top: -5px;
+  margin-bottom: -5px;
+}

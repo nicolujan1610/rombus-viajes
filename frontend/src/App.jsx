@@ -6,6 +6,7 @@ import ComprarTicket from "./componentes/ComprarTicket";
 import NuestrosDestinos from "./componentes/NuestrosDestinos";
 import Login from "./componentes/login";
 import ServiciosOfrecidos from "./componentes/ServiciosOfrecidos";
+import AtencionCliente from "./componentes/AtencionCliente";
 
 function App() {
   const [loginModal, setLoginModal] = useState(false)
@@ -25,6 +26,7 @@ function App() {
       <ComprarTicket />
       <NuestrosDestinos />
       <ServiciosOfrecidos />
+      <AtencionCliente />
       <footer className="footer">
         <p>Rombus Up Todos los derechos reservados.</p>
       </footer>

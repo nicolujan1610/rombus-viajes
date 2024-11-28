@@ -20,7 +20,7 @@ export default function NuestrosDestinos() {
       </div>
       <div className='nuestros-destinos-gallery'>
         {destinos.map(destino => (
-          <div className='destino-card'>
+          <div className='destino-card' key={destino}>
             <img src={destino} alt={destino.match(/\/([^\/]+)\.jpg$/)[1]} />
           </div>
         ))}

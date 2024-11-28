@@ -33,7 +33,7 @@ export default function ServiciosOfrecidos() {
           <div className="service-card">
             <img
               src={acLogo}
-              alt="Aire acondicionado" https
+              alt="Aire acondicionado"
               className="service-icon"
             />
             <p>Viaja cómodamente con nuestro sistema de climatización a bordo.</p>
