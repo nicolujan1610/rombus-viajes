@@ -10,6 +10,7 @@ import AtencionCliente from "./componentes/AtencionCliente";
 
 function App() {
   const [loginModal, setLoginModal] = useState(false)
+  const [buscandoViaje, setBuscandoViaje] = useState(false)
 
   return (
     <div className="App">
@@ -23,7 +24,10 @@ function App() {
           <img src={rombusBus} alt="imagen-bus" />
         </div>
       </main>
-      <ComprarTicket />
+      <ComprarTicket
+        buscandoViaje={buscandoViaje}
+        setBuscandoViaje={setBuscandoViaje}
+      />
       <NuestrosDestinos />
       <ServiciosOfrecidos />
       <AtencionCliente />
@@ -33,6 +37,15 @@ function App() {
       {
         loginModal &&
         <Login setLoginModal={setLoginModal} />
+      }
+      {
+        buscandoViaje &&
+        <div className="buscando-viaje-modal">
+          <div className="buscando-viaje--box">
+            <p>Buscando la mejor opción...</p>
+            <button onClick={() => { setBuscandoViaje(false) }}>Cancelar Busqueda</button>
+          </div>
+        </div>
       }
     </div>
   );

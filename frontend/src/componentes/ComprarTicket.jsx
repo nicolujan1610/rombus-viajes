@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import '../estilos/ComprarTicket.css'
+import { useNavigate } from 'react-router-dom'
 
-export default function ComprarTicket() {
+export default function ComprarTicket({ buscandoViaje, setBuscandoViaje }) {
 
   const [destinos, setDestinos] = useState([
     'La Rioja',
@@ -12,12 +13,13 @@ export default function ComprarTicket() {
     'Jujuy',
     'Mendoza',
   ])
-
   const [form, setForm] = useState({
     origen: 'x',
     destino: 'x',
     fecha: 'x'
   })
+
+  const navigate = useNavigate()
 
   const handleInputChange = (e) => {
     setForm({
@@ -26,7 +28,7 @@ export default function ComprarTicket() {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (form.origen == 'x') {
       alert('Seleccione el origen!')
@@ -43,6 +45,32 @@ export default function ComprarTicket() {
     if (form.cantidad == 0) {
       alert('Seleccione cantidad de pasajes!')
       return
+    }
+
+    setBuscandoViaje(true)
+    setTimeout(() => {
+      navigate('/comprar')
+    }, 1500)
+
+
+    try {
+      let url = 'http://localhost:5000/viajes'
+      const respuesta = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!respuesta.ok) {
+        throw new Error(`Error en la petición: ${respuesta.statusText}`);
+      }
+
+      const resultado = await respuesta.json()
+
+    } catch (error) {
+
     }
 
     console.log(form)
