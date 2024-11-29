@@ -5,9 +5,9 @@ export default function AtencionCliente() {
 
   const [formAtencion, setFormAtencion] = useState({
     nombre: '',
-    telefono: 0,
     dni: 0,
-    correo: '',
+    telefono: 0,
+    email: '',
     motivo: 'x',
     descripcion: ''
   })
@@ -19,12 +19,22 @@ export default function AtencionCliente() {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (formAtencion.motivo == 'x') {
       alert('Seleccione un motivo')
       return
     }
+    const consulta = await fetch("http://localhost:5000/consultas", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formAtencion)
+    })
+    const res = await consulta.json()
+    alert('Consulta enviada!')
+    window.location.reload()
   }
 
   return (
@@ -42,8 +52,8 @@ export default function AtencionCliente() {
             <div>
               <p className="etiqueta">Teléfono</p>
               <input type="number" placeholder="54-3804-123456" id='telefono' required onChange={handleInputChange} />
-              <p className="etiqueta">Correo electrónico</p>
-              <input type="email" placeholder="juanperez@gmai.com" id='correo' required onChange={handleInputChange} />
+              <p className="etiqueta">email electrónico</p>
+              <input type="email" placeholder="juanperez@gmai.com" id='email' required onChange={handleInputChange} />
             </div>
           </div>
           <p className="etiqueta"> Motivo</p>

@@ -102,10 +102,10 @@ app.post('/asientosNuevos', async(req,res) => {
   res.send({ok: true})
 })
 
-app.get('/consultas',validarConsulta,async(req,res)=>{
-  const {nombre,apellido,dni,telefono,email,motivo,descripcion}=req.body
-  const [resultado] = await db.execute("insert into consultas(nombre,apellido,dni,telefono,email,motivo,descripcion)values(?,?,?,?,?,?,?)",
-    [nombre,apellido,dni,telefono,email,motivo,descripcion]
+app.post('/consultas',async(req,res)=>{
+  const {nombre,dni,telefono,email,motivo,descripcion}=req.body
+  const [resultado] = await db.execute("insert into consultas(nombre,dni,telefono,email,motivo,descripcion)values(?,?,?,?,?,?)",
+    [nombre,dni,telefono,email,motivo,descripcion]
   )
   res.status(201).send(resultado)
 
