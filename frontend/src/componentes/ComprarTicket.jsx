@@ -12,6 +12,8 @@ export default function ComprarTicket({ buscandoViaje, setBuscandoViaje }) {
     'Salta',
     'Jujuy',
     'Mendoza',
+    'Cordoba',
+    'Buenos Aires'
   ])
   const [form, setForm] = useState({
     origen: 'x',
