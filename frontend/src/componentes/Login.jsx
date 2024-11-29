@@ -25,6 +25,15 @@ function Login({ setLoginModal }) {
     });
     const res = await consulta.json()
     console.log(res)
+    if (res.token) {
+      localStorage.setItem('token', res.token)
+      setTimeout(() => {
+        alert('Logueado correctamente')
+        window.location.reload()
+      }, [1500]);
+    } else {
+      alert('Datos incorrectos')
+    }
   }
 
   return (
@@ -37,7 +46,7 @@ function Login({ setLoginModal }) {
           <button className="login-button">Ingresar</button>
         </form>
         <p className="signup-prompt">
-          ¿No tienes una cuenta? <a href="/signup">Regístrate aquí</a>
+          ¿No tienes una cuenta? <a href="/registro">Regístrate aquí</a>
         </p>
         <p className="cerrar-login-button" onClick={
           () => {

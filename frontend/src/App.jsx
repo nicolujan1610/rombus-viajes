@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./componentes/Header";
 import rombusBus from './assets/rombusBus.jpeg'
@@ -10,12 +10,41 @@ import AtencionCliente from "./componentes/AtencionCliente";
 import Footer from "./componentes/Footer";
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem('token'))
+  const [user, setUser] = useState(false)
   const [loginModal, setLoginModal] = useState(false)
   const [buscandoViaje, setBuscandoViaje] = useState(false)
 
+  useEffect(() => {
+    const verificarJWT = async (token) => {
+      try {
+        const response = await fetch('http://localhost:5000/usuarioLogeado', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`, // Incluye el token en el header
+          },
+        });
+        const data = await response.json();
+        console.log(data)
+        if (data.ok) {
+          setUser(data.usuario)
+        }
+
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    verificarJWT(token)
+  }, [])
+
+  useEffect(() => {
+    console.log(user[0])
+  }, [user])
+
   return (
     <div className="App">
-      <Header setLoginModal={setLoginModal} />
+      <Header setLoginModal={setLoginModal} usuario={user} />
       <main className="main-container">
         <div className="main-title">
           <p>Viajar nunca fue tan facil y seguro!</p>

@@ -5,9 +5,7 @@ import RouterComponet from './RouterComponent.jsx';
 import './index.css'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <RouterComponet />
-    </BrowserRouter>
-  </StrictMode>,
+  <BrowserRouter>
+    <RouterComponet />
+  </BrowserRouter>
 )

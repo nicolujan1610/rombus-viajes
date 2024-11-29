@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "../estilos/RegisterForm.css";
+import { useNavigate } from 'react-router-dom'
+
 
 export default function RegisterForm() {
   const [form, setForm] = useState({
@@ -10,6 +12,8 @@ export default function RegisterForm() {
     email: '',
     password: ''
   })
+
+  const navigate = useNavigate()
 
   const handleInputChange = (e) => {
     setForm({
@@ -30,7 +34,12 @@ export default function RegisterForm() {
       body: JSON.stringify(form),
     });
     const res = await consulta.json()
-    console.log(res)
+    if (res.response == 'ok') {
+      setTimeout(() => {
+        alert('Registrado Correctamente!')
+        navigate('/')
+      }, [1500])
+    }
   }
 
   return (

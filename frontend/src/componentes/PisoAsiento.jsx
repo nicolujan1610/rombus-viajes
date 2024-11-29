@@ -1,15 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../estilos/PisoAsiento.css'
 
-export default function PisoAsiento({ setAsientoConfirmado, asientoSelected, setAsientoSelected }) {
+export default function PisoAsiento({ setAsientoConfirmado, asientoSelected, setAsientoSelected, asientosDisponibles }) {
   const [pisoArribaSelected, setPisoArribaSelected] = useState(true)
 
   const cantidadAsientosArribaIzq = Array.from({ length: 20 }, (_, i) => i + 1);
   const cantidadAsientosArribaDer = Array.from({ length: 16 }, (_, i) => i + 1);
   const cantidadAsientosAbajoIzq = Array.from({ length: 8 }, (_, i) => i + 1);
   const cantidadAsientosAbajoDer = Array.from({ length: 6 }, (_, i) => i + 1);
+  const [asientosOcupados, setAsientosOcupados] = useState([])
 
-  const asientosOcupados = [1, 2, 3, 4, 21, 22, 33, 34, 50]
+  useEffect(() => {
+    let ocupados = []
+    if (asientosDisponibles) {
+
+      for (let i = 1; i <= 50; i++) {
+        if (!asientosDisponibles.includes(i)) {
+          ocupados.push(i)
+        }
+      }
+    }
+    setAsientosOcupados(ocupados)
+
+  }, [asientosDisponibles])
 
   const handleAsientoSelected = (e) => {
     if (e.target.innerText == 'Ocupado') {
@@ -50,7 +63,7 @@ export default function PisoAsiento({ setAsientoConfirmado, asientoSelected, set
         <div className='asientos-arriba-der--container'>
           {
             cantidadAsientosArribaDer.map(asiento => (
-              <div key={asiento} className={asientoSelected == asiento + 20 ? `asiento-seleccionado asiento-der asiento-${asiento}` : `asiento-der asiento-${asiento}`} onClick={handleAsientoSelected}>{asientosOcupados.includes(asiento) ? 'Ocupado' : asiento + 20}</div>
+              <div key={asiento} className={asientoSelected == asiento + 20 ? `asiento-seleccionado asiento-der asiento-${asiento}` : `asiento-der asiento-${asiento}`} onClick={handleAsientoSelected}>{asientosOcupados.includes(asiento + 20) ? 'Ocupado' : asiento + 20}</div>
             ))
           }
         </div>

@@ -19,6 +19,21 @@
   border-radius: 50%;
 }
 
+.header nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header nav div{
+  display: flex;
+  flex-direction: column;
+}
+
+.header nav div button{
+  cursor: pointer;
+}
+
 .header nav a {
   margin: 0 20px;
   margin-left: 10px;

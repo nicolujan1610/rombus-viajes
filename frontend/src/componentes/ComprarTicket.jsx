@@ -42,36 +42,22 @@ export default function ComprarTicket({ buscandoViaje, setBuscandoViaje }) {
       alert('El origen y el destino no pueden ser iguales!')
       return
     }
-    if (form.cantidad == 0) {
-      alert('Seleccione cantidad de pasajes!')
-      return
-    }
 
     setBuscandoViaje(true)
+    const consulta = await fetch(`http://localhost:5000/viajes`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(form),
+    })
+    const res = await consulta.json()
+    console.log(res)
+
     setTimeout(() => {
-      navigate('/comprar')
+      navigate(`/comprar?viajeId=${res[0].id_viajes}`)
     }, 1500)
 
-
-    try {
-      let url = 'http://localhost:5000/viajes'
-      const respuesta = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
-
-      if (!respuesta.ok) {
-        throw new Error(`Error en la petición: ${respuesta.statusText}`);
-      }
-
-      const resultado = await respuesta.json()
-
-    } catch (error) {
-
-    }
 
     console.log(form)
   }
