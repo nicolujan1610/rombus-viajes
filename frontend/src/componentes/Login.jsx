@@ -14,9 +14,17 @@ function Login({ setLoginModal }) {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(loginForm)
+    const consulta = await fetch('http://localhost:5000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loginForm),
+    });
+    const res = await consulta.json()
+    console.log(res)
   }
 
   return (

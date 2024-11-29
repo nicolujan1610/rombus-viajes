@@ -7,6 +7,7 @@ import NuestrosDestinos from "./componentes/NuestrosDestinos";
 import Login from "./componentes/login";
 import ServiciosOfrecidos from "./componentes/ServiciosOfrecidos";
 import AtencionCliente from "./componentes/AtencionCliente";
+import Footer from "./componentes/Footer";
 
 function App() {
   const [loginModal, setLoginModal] = useState(false)
@@ -31,9 +32,6 @@ function App() {
       <NuestrosDestinos />
       <ServiciosOfrecidos />
       <AtencionCliente />
-      <footer className="footer">
-        <p>Rombus Up Todos los derechos reservados.</p>
-      </footer>
       {
         loginModal &&
         <Login setLoginModal={setLoginModal} />
@@ -47,6 +45,7 @@ function App() {
           </div>
         </div>
       }
+      <Footer></Footer>
     </div>
   );
 }

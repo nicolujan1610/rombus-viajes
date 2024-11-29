@@ -1,17 +1,32 @@
 import { useState } from 'react';
 import '../estilos/PisoAsiento.css'
 
-export default function PisoAsiento({ asientoSelected, setAsientoSelected }) {
+export default function PisoAsiento({ setAsientoConfirmado, asientoSelected, setAsientoSelected }) {
   const [pisoArribaSelected, setPisoArribaSelected] = useState(true)
 
   const cantidadAsientosArribaIzq = Array.from({ length: 20 }, (_, i) => i + 1);
   const cantidadAsientosArribaDer = Array.from({ length: 16 }, (_, i) => i + 1);
+  const cantidadAsientosAbajoIzq = Array.from({ length: 8 }, (_, i) => i + 1);
+  const cantidadAsientosAbajoDer = Array.from({ length: 6 }, (_, i) => i + 1);
+
+  const asientosOcupados = [1, 2, 3, 4, 21, 22, 33, 34, 50]
 
   const handleAsientoSelected = (e) => {
+    if (e.target.innerText == 'Ocupado') {
+      return
+    }
     if (asientoSelected == e.target.innerText) {
       setAsientoSelected(-1)
     } else {
       setAsientoSelected(e.target.innerText)
+    }
+  }
+
+  const handleConfirmarAsiento = (e) => {
+    if (asientoSelected > 0) {
+      setAsientoConfirmado(true)
+    } else {
+      alert('Seleccione un asiento!')
     }
   }
 
@@ -23,30 +38,44 @@ export default function PisoAsiento({ asientoSelected, setAsientoSelected }) {
         <button style={{ background: `${pisoArribaSelected ? 'transparent' : 'green'}` }} onClick={() => { setPisoArribaSelected(false) }}>Piso Abajo</button>
       </div>
       {/* Piso de Arriba */}
-      <div className='seleccionar-asiento-arriba-screen'
+      <div className='seleccionar-asiento-screen'
         style={{ display: `${pisoArribaSelected ? 'flex' : 'none'}` }}>
-        <div className='asientos-izq--container'>
+        <div className='asientos-arriba-izq--container'>
           {
             cantidadAsientosArribaIzq.map(asiento => (
-              <div key={asiento} className={asientoSelected == asiento ? 'asiento-seleccionado asiento-izq' : 'asiento-izq'} onClick={handleAsientoSelected}>{asiento}</div>
+              <div key={asiento} className={asientoSelected == asiento ? 'asiento-seleccionado asiento-izq' : 'asiento-izq'} onClick={handleAsientoSelected}>{asientosOcupados.includes(asiento) ? 'Ocupado' : asiento}</div>
             ))
           }
         </div>
-        <div className='asientos-der--container'>
+        <div className='asientos-arriba-der--container'>
           {
             cantidadAsientosArribaDer.map(asiento => (
-              <div key={asiento} className={asientoSelected == asiento + 20 ? `asiento-seleccionado asiento-der asiento-${asiento}` : `asiento-der asiento-${asiento}`} onClick={handleAsientoSelected}>{asiento + 20}</div>
+              <div key={asiento} className={asientoSelected == asiento + 20 ? `asiento-seleccionado asiento-der asiento-${asiento}` : `asiento-der asiento-${asiento}`} onClick={handleAsientoSelected}>{asientosOcupados.includes(asiento) ? 'Ocupado' : asiento + 20}</div>
             ))
           }
         </div>
       </div>
-      <div className='seleccionar-asiento-abajo-screen'
+      {/* Piso de abajo */}
+      <div className='seleccionar-asiento-screen seleccionar-asiento-abajo-screen'
         style={{ display: `${pisoArribaSelected ? 'none' : 'flex'}` }}
       >
+        <div className='asientos-abajo-izq--container'>
+          {
+            cantidadAsientosAbajoIzq.map(asiento => (
+              <div key={asiento + 36} className={asientoSelected == asiento + 36 ? 'asiento-seleccionado asiento-izq' : 'asiento-izq'} onClick={handleAsientoSelected}>{asientosOcupados.includes(asiento) ? 'Ocupado' : asiento + 36}</div>
+            ))
+          }
+        </div>
+        <div className='asientos-abajo-der--container'>
+          {
+            cantidadAsientosAbajoDer.map(asiento => (
+              <div key={asiento + 44} className={asientoSelected == asiento + 44 ? 'asiento-seleccionado asiento-der asiento-abajo-der' : 'asiento-der asiento-abajo-der'} onClick={handleAsientoSelected}>{asientosOcupados.includes(asiento) ? 'Ocupado' : asiento + 44}</div>
+            ))
+          }
+        </div>
 
       </div>
-
-      <button className=''>Confirmar Asiento</button>
+      <button className='confirmar-asiento--button' onClick={handleConfirmarAsiento}>Confirmar Asiento</button>
     </div>
   )
 }

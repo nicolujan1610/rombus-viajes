@@ -10,7 +10,7 @@
   gap: 8px;
 }
 
-.seleccionar-asiento-arriba-screen{
+.seleccionar-asiento-screen{
   width: 360px;
   height: calc(100vh - 200px);
   border: 4px solid #007d04;
@@ -21,11 +21,17 @@
   justify-content: space-between;
 }
 
-.asientos-izq--container{
+.asientos-arriba-izq--container,
+.asientos-abajo-izq--container
+{
   display: flex;
   flex-wrap: wrap;
   width: calc(50% - 20px);
   height: 100%;
+}
+
+.asientos-abajo-izq--container{
+  height: 60%;
 }
 
 .asiento-izq, .asiento-der{
@@ -38,15 +44,25 @@
   cursor: pointer;
 }
 
+.asiento-abajo-der{
+  height: 33.3%;
+}
+
 .asiento-3,.asiento-4{
   margin-bottom: 100px;
 }
 
-.asientos-der--container{
+.asientos-arriba-der--container,
+.asientos-abajo-der--container
+{
   display: flex;
   flex-wrap: wrap;
   width: calc(50% - 20px);
   height: 100%;
+}
+
+.asientos-abajo-der--container{
+  height: 50%;
 }
 
 .asiento-izq:hover, .asiento-der:hover{
@@ -56,6 +72,16 @@
 .asiento-seleccionado{
   background-color: orange;
 }
+
+.seleccionar-asiento-abajo-screen{
+  display: flex;
+  align-items: flex-end;
+}
+
+.asientos-abajo-izq--container div{
+  height: 25%;
+}
+
 
 .pisos-button button{
   background-color: transparent;
@@ -77,4 +103,18 @@
 }
 .piso-selected{
   background-color: #007d04;
+}
+
+.confirmar-asiento--button{
+  border: 1px solid white;
+  padding: 4px;
+  background-color: transparent;
+  font-size: 24px;
+  color: #eee;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.confirmar-asiento--button:hover{
+  background-color: #007CCA;
 }
